@@ -8,8 +8,8 @@ export default class Main extends Component {
     
         this.state = {
             channels : {
-                google :true,
-                facebook :true,
+                google :false,
+                facebook :false,
             },
             metadata : {
                 title: 'This is title',

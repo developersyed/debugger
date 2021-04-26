@@ -4,8 +4,29 @@ export default function Preview(props) {
     const channels = props.details.channels;
     return (
         <div>
-            Google: {channels.google ? 'true' : 'false'}<br/>
-            Facebook: {channels.facebook ? 'true' : 'false'} 
+            {
+                channels.google && 
+                <Google />
+            }
+            {
+                channels.facebook && 
+                <Facebook />
+            }
+        </div>
+    )
+}
+
+const Google = () => {
+    return (
+        <div className="google">
+            Google
+        </div>
+    )
+}
+const Facebook = () => {
+    return (
+        <div className="google">
+            Facebook
         </div>
     )
 }
