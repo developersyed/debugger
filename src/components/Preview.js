@@ -1,10 +1,11 @@
 import React from 'react'
 
 export default function Preview(props) {
+    const channels = props.details.channels;
     return (
         <div>
-            {props.metatag.google} <br/>
-            {props.metatag.facebook}
+            Google: {channels.google ? 'true' : 'false'}<br/>
+            Facebook: {channels.facebook ? 'true' : 'false'} 
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MetaTag from './MetaTags'
+import Channels from './Channels'
 import Preview from './Preview'
 
 export default class Main extends Component {
@@ -7,29 +7,35 @@ export default class Main extends Component {
         super(props)
     
         this.state = {
-            social : {
-                google : 'false',
-                facebook : 'false',
+            channels : {
+                google :true,
+                facebook :true,
+            },
+            metadata : {
+                title: 'This is title',
+                content: 'A short desc of content'
             }
         }
 
-        this.metaHandler = this.metaHandler.bind(this);
+        this.channelHandler = this.channelHandler.bind(this);
     }
 
-    metaHandler = (e) =>  {
+    channelHandler = (e) =>  {
+       const clickedChannel = e.target.id;
         this.setState({
-            social : {
-                google: e.target.value
+            channels : {
+                ...this.state.channels,
+                [e.target.id] : !this.state.channels[clickedChannel]
             }
-        })
+        });
     }
     
     render() {
         return (
             <div>
                 Main
-                <MetaTag metatag={this.state.social} metaHandler={this.metaHandler} />
-                <Preview metatag={this.state.social} />
+                <Channels channels={this.state.channels} channelHandler={this.channelHandler} />
+                <Preview details={this.state} />
             </div>
         )
     }
