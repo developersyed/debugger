@@ -1,32 +1,44 @@
 import React from 'react'
 
 export default function Preview(props) {
+    const url = props.details.url;
     const channels = props.details.channels;
+    const metadata = props.details.metadata;
     return (
         <div>
             {
                 channels.google && 
-                <Google />
+                <Google metadata={metadata} url={url} />
             }
             {
                 channels.facebook && 
-                <Facebook />
+                <Facebook metadata={metadata} url={url} />
             }
         </div>
     )
 }
 
-const Google = () => {
+const Google = (props) => {
+    const url = props.url;
+    const metadata = props.metadata;
     return (
         <div className="google">
-            Google
+            <a href={url}>
+                <h2>{metadata.title}</h2>
+                <p>{metadata.content}</p>
+            </a>
         </div>
     )
 }
-const Facebook = () => {
+const Facebook = (props) => {
+    const url = props.url;
+    const metadata = props.metadata;
     return (
-        <div className="google">
-            Facebook
+        <div className="facebook">
+            <a href={url}>
+                <h2>{metadata.title}</h2>
+                <p>{metadata.content}</p>
+            </a>
         </div>
     )
 }
