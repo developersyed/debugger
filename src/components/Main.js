@@ -15,8 +15,10 @@ export default class Main extends Component {
             },
             metadata : {
                 title: '',
-                content: ''
-            }
+                content: '',
+                image : null
+            },
+            error : null
         }
 
         this.channelHandler = this.channelHandler.bind(this);
@@ -32,17 +34,48 @@ export default class Main extends Component {
         });
     }
     metaDataHandler = (e) => {
-        this.setState({
-            metadata : {
-                ...this.state.metadata,
-                [e.target.name] : [e.target.value]
-            }
-        })
+        // const img = URL.createObjectURL(e.target.file[0]);
+        
+        if(e.target.name === 'image'){
+            this.setState({
+                metadata : {
+                    ...this.state.metadata,
+                    image : URL.createObjectURL(e.target.files[0])
+                }
+            })
+        } else {
+            this.setState({
+                metadata : {
+                    ...this.state.metadata,
+                    [e.target.name] : [e.target.value],
+            
+                }
+            });
+        }
+
     }
+
+    
+    componentDidMount() {
+        // console.log('hello');
+        fetch("https://www.walkforautism.org.au/medal-2021")
+            // .then(res => res.json())
+            .then(
+                (res) => {
+                    console.log('heel');
+                    console.log(res);
+                },
+                
+                (error) => {
+                    this.setState({
+                        error
+                    });
+                }
+            )
+      }
     urlHandler = (e) => {
-        this.setState({
-            url: [e.target.value]
-        })
+        // componentDidMount(e);
+    //     const url = e.target.value;
     }
     
     render() {

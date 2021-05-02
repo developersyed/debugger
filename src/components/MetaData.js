@@ -9,6 +9,10 @@ function MetaData(props) {
                     <input type="text" name="title" onChange={(e) => props.metaDataHandler(e)} />
                     <label htmlFor="content">Content</label>
                     <input type="text" name="content" onChange={(e) => props.metaDataHandler(e)} />
+
+                    <label htmlFor="content">Image</label>
+                    <input type="file" name="image" onChange={(e) => props.metaDataHandler(e)} />
+                    
                 </div>
             </form>
         </div>

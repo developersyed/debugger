@@ -24,6 +24,7 @@ const Google = (props) => {
     return (
         <div className="google">
             <a href={url}>
+                <img src={metadata.image} width="200px" alt=""/>
                 <h2>{metadata.title}</h2>
                 <p>{metadata.content}</p>
             </a>
@@ -36,6 +37,7 @@ const Facebook = (props) => {
     return (
         <div className="facebook">
             <a href={url}>
+                <img src={metadata.image} width="200px" alt=""/>
                 <h2>{metadata.title}</h2>
                 <p>{metadata.content}</p>
             </a>
