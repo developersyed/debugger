@@ -6,8 +6,12 @@ import Preview from './Preview'
 export default class Main extends Component {
     constructor(props) {
         super(props)
+
+        
     
         this.state = {
+            apiResponse: '',
+
             url : '',
             channels : {
                 google :false,
@@ -23,6 +27,24 @@ export default class Main extends Component {
 
         this.channelHandler = this.channelHandler.bind(this);
     }
+
+    
+    
+    callAPI() {
+        fetch("http://localhost:9000/testAPI", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+        }).then(res => {
+            // fetch success
+            this.setState({
+                apiResponse : res.data
+            }) // pass an object receive from server into setData function
+         });
+         console.log(this.state.apiResponse);
+    }
+    
 
     channelHandler = (e) =>  {
        const clickedChannel = e.target.id;
@@ -54,28 +76,16 @@ export default class Main extends Component {
         }
 
     }
+    // componentWillMount(){
+    //     this.metaDataHandler();
+    // }
 
     
-    componentDidMount() {
-        // console.log('hello');
-        fetch("https://www.walkforautism.org.au/medal-2021")
-            // .then(res => res.json())
-            .then(
-                (res) => {
-                    console.log('heel');
-                    console.log(res);
-                },
-                
-                (error) => {
-                    this.setState({
-                        error
-                    });
-                }
-            )
-      }
+    
     urlHandler = (e) => {
-        // componentDidMount(e);
-    //     const url = e.target.value;
+        this.setState({
+            url : e.target.value
+        });
     }
     
     render() {
@@ -86,6 +96,7 @@ export default class Main extends Component {
                 <Channels channels={this.state.channels} channelHandler={this.channelHandler} />
                 <MetaData metaDataHandler={this.metaDataHandler} />
                 <Preview details={this.state} />
+                <p>{this.state.apiResponse}</p>
             </div>
         )
     }

@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+#hidden_copy {
+  position: absolute;
+  left: -100%;
+}
+
+.modal-content {
+  width: 640px;
+  margin: 0 auto;
+}
+
+.modal__textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+  font-size: 16px;
+  font-family: monospace;
+  border: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  transition: all 375ms ease-out;
+  background: #EBF1FA;
+  overflow-x: auto;
+  text-align: left;
+}
+.hljs {
+  color: #00193a;
+}
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #EBF1FA;
+}
+.hljs-comment {
+  color: #738191;
+}
+.hljs-string, 
+.hljs-title, 
+.hljs-section, 
+.hljs-built_in, 
+.hljs-literal, 
+.hljs-type, 
+.hljs-addition, 
+.hljs-tag, 
+.hljs-quote, 
+.hljs-name, 
+.hljs-selector-id, 
+.hljs-selector-class {
+  color: #0048ab;
+}
